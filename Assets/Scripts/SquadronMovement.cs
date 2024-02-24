@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SquadronMovement : MonoBehaviour
 {
-    public static float lateralSpeed = 5.0f; // Velocidad de movimiento lateral.
+    public static float lateralSpeed = 3.0f; // Velocidad de movimiento lateral.
     public float advanceAmount = 5.0f; // Cuánto avanza el escuadrón en cada paso.
    
     public float jumpTime = 10;

@@ -25,12 +25,32 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject); // Destruye el proyectil
             PlayerController.canShoot = true;
         }
-        if (other.CompareTag("Enemy") || other.CompareTag("EnemyPR"))
+        if (other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject); // Destruye el objeto con el que colisionó
+            EnemyProps enemyProps = other.gameObject.GetComponent<EnemyProps>();
             Destroy(gameObject); // Destruye el proyectil
-            PlayerController.canShoot = true;
-            SquadronMovement.lateralSpeed = SquadronMovement.lateralSpeed + .5f;
+           
+            SquadronMovement.lateralSpeed = SquadronMovement.lateralSpeed + .2f;
+
+            // Calcula los puntos basados en la fila del enemigo.
+            int puntos = 0;
+
+            if (enemyProps.fila < 2) // Primera y segunda fila.
+            {
+                puntos = 10;
+            }
+            else if (enemyProps.fila < 4) // Tercera y cuarta fila.
+            {
+                puntos = 20;
+            }
+            else // Última fila.
+            {
+                puntos = 30;
+            }
+            
+            Destroy(other.gameObject); // Destruye el objeto con el que colisionó
+            // Añade los puntos a la puntuación.
+            ScoreManager.instance.AddScore(puntos); PlayerController.canShoot = true;
         }
         if (other.CompareTag("Tower"))
         {
@@ -64,4 +84,5 @@ public class Projectile : MonoBehaviour
     {
         PlayerController.canShoot = true; // Permite disparar de nuevo cuando el proyectil se destruye
     }
+    
 }

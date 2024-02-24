@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public static bool canShoot = true; // Ahora es estática
 
-    void Update()
+    void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);

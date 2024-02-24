@@ -35,6 +35,12 @@ public class EnemySquadronGenerator : MonoBehaviour
                 // Instancia el enemigo como hijo del objeto padre
                 GameObject enemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.Euler(0, -90, 0), enemiesParent);
 
+                EnemyProps enemyScript = enemy.GetComponent<EnemyProps>();
+                if (enemyScript != null)
+                {
+                    enemyScript.fila = row;
+                }
+
                 // Asigna la posición de la formación al enemigo
                 EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
                 enemyMovement.targetPosition = formationPosition;
@@ -56,7 +62,7 @@ public class EnemySquadronGenerator : MonoBehaviour
  
     private Vector3 CalculateFormationPosition(int row, int col)
     {
-        return new Vector3(row * 2.5f - 15, 0, col * 2.5f - 35);
+        return new Vector3(row * 2.5f - 12, 0, col * 2.5f - 40);
     }
 
 }

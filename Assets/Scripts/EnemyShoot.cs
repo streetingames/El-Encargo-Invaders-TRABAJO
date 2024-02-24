@@ -24,7 +24,7 @@ public class EnemyShoot : MonoBehaviour
 
     public void AttemptToShoot()
     {
-        if (Random.Range(0, 2000) < 1) // 1/1000 de probabilidad de disparar
+        if (Random.Range(0, 3000) < 1) // 1/1000 de probabilidad de disparar
         {
             Shoot();
         }
